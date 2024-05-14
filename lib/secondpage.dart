@@ -75,23 +75,39 @@ class _SecondPageState extends State<SecondPage> {
                         if (await launchUrl(mail)) {
                              }else{}
                   }, child:Text(widget.emails)),
-                    TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Massage',
-                          suffixIcon: Icon(Icons.photo_camera_rounded,color: Colors.black54),
-                          prefixIcon: Icon(Icons.emoji_emotions,color: Colors.black54),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2,)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Card(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(25)),
+                              child: Row(
+                                children: [
+                                  IconButton(onPressed: (){}, icon:Icon(Icons.emoji_emotions),color: const Color(0xFF00A884)),
+                                  Expanded(
+                                    child: TextField(
+                                      keyboardType: TextInputType.multiline,
+                                      maxLines: null,
+                                      decoration: InputDecoration(
+                                          hintText: 'Massage',border: null,)
+                                    ),),
+                                  IconButton(onPressed: (){}, icon:Icon(Icons.link_sharp),color: const Color(0xFF00A884)),
+                                  IconButton(onPressed: (){}, icon:Icon(Icons.currency_rupee_rounded),color: const Color(0xFF00A884)),
+                                  IconButton(onPressed: (){}, icon:Icon(Icons.camera_alt_rounded),color: const Color(0xFF00A884)),
+                                ],
+                              ),
+                            ),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 1,),
-                          ),
+                          MaterialButton(
+                            shape: CircleBorder(),
+                              minWidth: 0,
+                              color:const Color(0xFF00A884) ,
+                              onPressed: (){}, child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Icon(Icons.mic_outlined),
+                              ))
+                        ],
                       ),
                     ),
               ],

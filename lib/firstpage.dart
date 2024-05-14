@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:api_calling1/secondpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
 import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart';
 
 import 'json/Api.dart';
+import 'massaging.dart';
 
 class firstpage extends StatefulWidget {
   const firstpage({super.key});
@@ -15,6 +18,8 @@ class firstpage extends StatefulWidget {
 }
 
 class _firstpageState extends State<firstpage> {
+  List<SmsMessage>_massages=[];
+  SmsQuery query =SmsQuery();
 
   Future<Api>getapi()async{
     final response =await http.get(Uri.parse('https://randomuser.me/api/?results=50'));
@@ -82,8 +87,9 @@ class _firstpageState extends State<firstpage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-
-        },child: Icon(Icons.message_rounded),backgroundColor: const Color(0xFF00A884),),
+          Navigator.push(context, MaterialPageRoute(builder: (context) => My(),));
+        },
+        child: Icon(Icons.message_rounded),backgroundColor: const Color(0xFF00A884),),
     );
   }
 }
